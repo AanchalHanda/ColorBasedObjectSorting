@@ -1,0 +1,36 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>RegisterPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="user">
+    <ion-label for="uname">User Name</ion-label>
+    <ion-input  type="text" 
+                id="uname" 
+                name="user_name" 
+                placeholder="Enter your name" 
+                [(ngModel)]="user_name" 
+                formControlName="user_name"
+                required>
+      </ion-input>
+
+    <ion-label for="upass">Password</ion-label>
+    <ion-input  type="password" 
+                id="upass" 
+                name="user_name" 
+                placeholder="Create a password" 
+                [(ngModel)]="user_password" 
+                formControlName="user_password"
+                required>
+    </ion-input>
+  
+  <button ion-button [disabled]="user.invalid" (click)="sendData()">Save User</button>
+</form>
+<p (click)="toLoginPage()" class="linkcolor">Already registerd? Login here.</p>
+</ion-content>
