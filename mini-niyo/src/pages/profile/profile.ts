@@ -1,41 +1,39 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController} from 'ionic-angular';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import { LoginPage } from '../login/login';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
-import { ProfilePage } from '../profile/profile';
+
+/**
+ * Generated class for the ProfilePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-profile',
+  templateUrl: 'profile.html',
 })
-export class HomePage {
-
-  user_name:any;
-  date = new Date();
-  photos : any;
-  myDate: String = new Date(this.date.getTime() - this.date.getTimezoneOffset()*60000).toISOString();
-  constructor(public navCtrl: NavController,
-              public http:Http,
+export class ProfilePage {
+  photos:any;
+  constructor(public navCtrl: NavController, 
               public navParams: NavParams,
+              public viewCtrl:ViewController,
               public imagePicker: ImagePicker,
-              public cropService: Crop,
-              public modalCtrl:ModalController) {
-    this.user_name=this.navParams.get('user_name');
+              public cropService: Crop) {
   }
 
-  onClickLogout(){
-    this.navCtrl.setRoot(LoginPage)
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfilePage');
   }
 
-  onClickPic(){
-    let addModal = this.modalCtrl.create(ProfilePage);
-    addModal.present();
+  onClickClose(){
+    this.viewCtrl.dismiss();
   }
 
-  onClickEdit(){
+  onClickProPic(){
     let options= {
       maximumImagesCount: 1,
     }
@@ -58,4 +56,3 @@ export class HomePage {
   }
 
 }
-

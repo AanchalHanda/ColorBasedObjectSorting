@@ -10,12 +10,19 @@ import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login'
 import { PersonalDetailsPage } from '../pages/personal-details/personal-details';
 import { FinancialDetailsPage } from '../pages/financial-details/financial-details';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Crop } from '@ionic-native/crop';
+import { Camera } from '@ionic-native/camera';
+import { ProfilePage } from '../pages/profile/profile';
+
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     RegisterPage,
     LoginPage,
+    ProfilePage,
     PersonalDetailsPage,
     FinancialDetailsPage,
   ],
@@ -30,10 +37,14 @@ import { FinancialDetailsPage } from '../pages/financial-details/financial-detai
     HomePage,
     RegisterPage,
     LoginPage,
+    ProfilePage,
     PersonalDetailsPage,
     FinancialDetailsPage,
   ],
   providers: [
+    ImagePicker,
+		Crop,
+		Camera,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
